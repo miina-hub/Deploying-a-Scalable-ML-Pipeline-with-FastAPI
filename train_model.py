@@ -20,8 +20,8 @@ data = pd.read_csv(data_path) # your code here
 
 # TODO: split the provided data to have a train dataset and a test dataset
 # Optional enhancement, use K-fold cross validation instead of a train-test split.
-train, test = train_test_split(data, test_size=0.2, random_state=42)
 # Your code here
+train, test = train_test_split(data, test_size=0.2, random_state=42)
 
 # DO NOT MODIFY
 cat_features = [
@@ -36,16 +36,17 @@ cat_features = [
 ]
 
 # TODO: use the process_data function provided to process the data.
-X_train, y_train, encoder, lb = process_data(
-    X=train,
-    categorical_features=cat_features,
-    label="salary",
-    training=True
-    # your code here
-    # use the train dataset 
-    # use training=True
-    # do not need to pass encoder and lb as input
+try:
+    X_train, y_train, encoder, lb = process_data(
+        X=train,
+        categorical_features=cat_features,
+        label="salary",
+        training=True,
     )
+except Exception as e:
+    import traceback
+    traceback.print_exc()
+    raise
 
 X_test, y_test, _, _ = process_data(
     test,
@@ -93,7 +94,7 @@ for col in cat_features:
             label = "salary",
             encoder = encoder,
             lb = lb,
-            model = model
+            model = model,
         )
         with open("slice_output.txt", "a") as f:
             print(f"{col}: {slicevalue}, Count: {count:,}", file=f)

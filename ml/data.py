@@ -51,10 +51,16 @@ def process_data(
         y = np.array([])
 
     X_categorical = X[categorical_features].values
-    X_continuous = X.drop(*[categorical_features], axis=1)
+    X_continuous = X.drop(columns=categorical_features)
 
     if training is True:
-        encoder = OneHotEncoder(sparse_output=False, handle_unknown="ignore")
+        # Construct OneHotEncoder in a way that's compatible with different
+        # scikit-learn versions: newer versions use `sparse_output`, older
+        # ones use `sparse`.
+        try:
+            encoder = OneHotEncoder(sparse_output=False, handle_unknown="ignore")
+        except TypeError:
+            encoder = OneHotEncoder(sparse=False, handle_unknown="ignore")
         lb = LabelBinarizer()
         X_categorical = encoder.fit_transform(X_categorical)
         y = lb.fit_transform(y.values).ravel()
