@@ -1,28 +1,48 @@
 import pytest
 # TODO: add necessary import
+import numpy as np
+from ml.model import compute_model_metrics, train_model, inference
+from sklearn.ensemble import RandomForestClassifier
 
 # TODO: implement the first test. Change the function name and input as needed
-def test_one():
+def test_trainer():
     """
-    # add description for the first test
+    Test if train_model returns a RandomForestClassifier
     """
-    # Your code here
+    X_train = [[1,2,3,4,5],[1,2,3,4,5]]
+    y_train = [[1,2,3,4,5],[1,2,3,4,5]]
+    X_test = [[1,2,3,4,5],[1,2,3,4,5]]
+    m = train_model(X_train, y_train)
+    p = m.predict(X_test)
+    assert p.all() == 1
+
     pass
 
 
 # TODO: implement the second test. Change the function name and input as needed
-def test_two():
+def test_compute_metrics_model():
     """
-    # add description for the second test
+    Test compute model metrics returns correct values
     """
-    # Your code here
+    y_test = [1,0,1,0,1]
+    preds = [1,0,1,0,1]
+    p, r, fb = compute_model_metrics(y_test, preds)
+    assert fb == 1
+
     pass
 
 
 # TODO: implement the third test. Change the function name and input as needed
-def test_three():
+def test_fucntion_inference():
     """
-    # add description for the third test
+    Test inference returns valid predicted values
     """
-    # Your code here
+    X_train = [[1,2,3,4,5],[1,2,3,4,5]]
+    y_train = [[1,2,3,4,5],[1,2,3,4,5]]  
+    X_test = [[1,2,3,4,5],[1,2,3,4,5]] 
+    random_forest = RandomForestClassifier()
+    model = random_forest.fit(X_train, y_train)
+    p = inference(model, X_test)
+    assert p.all() == 1
+
     pass
