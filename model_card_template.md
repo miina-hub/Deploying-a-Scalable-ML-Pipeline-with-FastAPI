@@ -17,6 +17,6 @@ Census data was split into train dataset and test dataset. 20% of the dataset is
 ## Metrics
 _Please include the metrics used and your model's performance on those metrics._
 
-## Ethical Considerations
+## Ethical Consideration
 
 ## Caveats and Recommendations
