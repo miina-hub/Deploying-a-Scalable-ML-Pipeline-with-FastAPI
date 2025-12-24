@@ -31,9 +31,8 @@ def test_compute_metrics_model():
 
     pass
 
-
 # TODO: implement the third test. Change the function name and input as needed
-def test_fucntion_inference():
+def test_function_inference():
     """
     Test inference returns valid predicted values
     """
