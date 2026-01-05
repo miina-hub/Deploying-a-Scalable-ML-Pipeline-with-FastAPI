@@ -18,5 +18,6 @@ Census data was split into train dataset and test dataset. 20% of the dataset is
 _Please include the metrics used and your model's performance on those metrics._
 
 ## Ethical Consideration
+Data may not be representing all groups of people making for a bias dataset. 
 
 ## Caveats and Recommendations

@@ -40,7 +40,7 @@ app = FastAPI()  # your code here
 async def get_root():
     """ Say hello!"""
     return {"greeting": "Hello!"}
-    pass
+pass
 
 
 # TODO: create a POST on a different path that does model inference
@@ -74,5 +74,5 @@ async def post_inference(data: Data):
         # use training = False
         # do not need to pass lb as input
     )
-    _inference = None # your code here to predict the result using data_processed
+    _inference = inference(model, data_processed) # your code here to predict the result using data_processed
     return {"result": apply_label(_inference)}
