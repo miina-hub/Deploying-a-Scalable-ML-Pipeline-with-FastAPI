@@ -50,7 +50,7 @@ X_test, y_test, _, _ = process_data(
     label="salary",
     training=False,
     encoder=encoder,
-    lb=lb,
+    lb=lb
 )
 
 # TODO: use the train_model function to train the model on the training dataset
